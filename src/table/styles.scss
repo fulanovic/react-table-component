@@ -1,0 +1,51 @@
+.table-container {
+    width: 100%;
+    margin: auto;
+
+    table {
+        width: 100%;
+        color: #333;
+
+        thead {
+            tr {
+                th {
+                    border-top: none;
+                    border-bottom: 0.3rem solid #000;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                cursor: pointer;
+                transition: all 0.25s ease;
+
+                &:hover {
+                    background: dodgerblue !important;
+                    color: white !important;
+                }
+            }
+        }
+
+        tfoot {
+            tr:first-of-type {
+                border-top: none;
+                border-top: 0.3rem solid #000;
+            }
+            td:not(:first-child) {
+                text-align: right;
+                color: green;
+            }
+        }
+    }
+}
+
+.btn-print-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    .btn-print {
+        width: 10rem;
+    }
+}
