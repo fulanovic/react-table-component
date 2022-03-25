@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import DataTable from './table/datatable';
 import 'bootstrap/dist/css/bootstrap.css';
+import AddButton from './table/assets/btn-add';
 
 function App() {
     const [data, setData] = useState([]);
@@ -57,6 +58,10 @@ function App() {
         console.log(item);
     };
 
+    const handleAddClick = () => {
+        console.log('add click...');
+    };
+
     return (
         <div className='App container'>
             <DataTable
@@ -67,9 +72,12 @@ function App() {
                 searchLabel='Search albums'
                 searchLabelPlaceholder='Start typing...'
                 searchColumns={['id', 'userId', 'title']}
+                searchNoDataItemPrefix='No data for item'
                 readonly={false}
+                enableRowHover={true}
                 onRowClick={(item) => console.log(item)}
                 markRowOnClick={false}
+                btnAdd={<AddButton onClick={handleAddClick} />}
                 printEnable={true}
                 printColumns={columns}
                 printHeader='Placeholder albums'

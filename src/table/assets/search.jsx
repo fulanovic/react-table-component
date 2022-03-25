@@ -8,6 +8,7 @@ const SearchTerm = ({
     filteredData,
     setCurrentPage,
     noSearchDataCondition,
+    searchNoDataItemPrefix,
     label = 'Search',
     placeholder = 'Start typing search term'
 }) => {
@@ -31,7 +32,7 @@ const SearchTerm = ({
             />
             {noSearchDataCondition && (
                 <div className='mb-5'>
-                    No data for the search term{' '}
+                    {`${searchNoDataItemPrefix} `}
                     <span style={{ fontWeight: 700 }}>{`${searchTerm}`}</span>
                 </div>
             )}

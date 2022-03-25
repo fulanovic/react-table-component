@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TableHeader from './assets/table-header';
 import TableBody from './assets/table-body';
 import Pagination from './assets/pagination';
@@ -23,11 +23,13 @@ const DataTable = ({
     searchLabel = 'Search',
     searchLabelPlaceholder = '',
     searchBackground = true,
+    searchNoDataItemPrefix = 'No data for',
+    enableRowHover = true,
     markRowOnClick = false,
     markedRowStyle = {},
     onRowClick,
     pageSize = 19,
-    btnAdd,
+    btnAdd = null,
     printEnable = false,
     printHeader = '',
     printColumns = null,
@@ -37,6 +39,13 @@ const DataTable = ({
     const [currentPage, setCurrentPage] = useState(1);
     const [sortColumn, setSortColumn] = useState({ path: '', order: 'asc' });
     const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        const tblContainer = document.querySelector('.bf-table-container');
+        if (enableRowHover) {
+            tblContainer.classList.add('enable-hover');
+        }
+    }, []);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -125,11 +134,11 @@ const DataTable = ({
 
     return (
         <>
-            <div className='table-container'>
+            <div className='bf-table-container'>
                 {!hideSearch && data.length > 0 && (
                     <div className={searchBackground ? 'form mb-5' : ''}>
                         <div className='row'>
-                            <div className='col-6'>
+                            <div className='col-3'>
                                 <SearchTerm
                                     searchTerm={searchTerm}
                                     setSearchTerm={setSearchTerm}
@@ -137,13 +146,17 @@ const DataTable = ({
                                     filteredData={filteredData}
                                     setCurrentPage={setCurrentPage}
                                     noSearchDataCondition={noSearchData}
+                                    searchNoDataItemPrefix={
+                                        searchNoDataItemPrefix
+                                    }
                                     label={searchLabel}
                                     placeholder={searchLabelPlaceholder}
                                 />
                             </div>
-                            <div className='col-6'>
-                                <div className='btn-print-container'>
+                            <div className='col-9'>
+                                <div className='bf-btns-container'>
                                     {printEnable && printBtn}
+                                    {btnAdd}
                                 </div>
                             </div>
                         </div>

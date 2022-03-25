@@ -1,4 +1,6 @@
-.table-container {
+$bf-tr-hover-color: #666;
+
+.bf-table-container {
     width: 100%;
     margin: auto;
 
@@ -15,18 +17,6 @@
             }
         }
 
-        tbody {
-            tr {
-                cursor: pointer;
-                transition: all 0.25s ease;
-
-                &:hover {
-                    background: dodgerblue !important;
-                    color: white !important;
-                }
-            }
-        }
-
         tfoot {
             tr:first-of-type {
                 border-top: none;
@@ -38,13 +28,28 @@
             }
         }
     }
+
+    &.enable-hover {
+        tbody {
+            tr {
+                cursor: pointer;
+                transition: all 0.25s ease;
+
+                &:hover {
+                    background: $bf-tr-hover-color;
+                    color: white !important;
+                }
+            }
+        }
+    }
 }
 
-.btn-print-container {
+.bf-btns-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 100%;
+
     .btn-print {
         width: 10rem;
     }
