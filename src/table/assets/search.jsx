@@ -4,7 +4,6 @@ import Input from './input';
 const SearchTerm = ({
    searchTerm,
    setSearchTerm,
-   debounceDelay = 1000,
    data,
    filteredData,
    setCurrentPage,
@@ -13,7 +12,7 @@ const SearchTerm = ({
    label = 'Search',
    placeholder = 'Start typing search term'
 }) => {
-   const debounce = (callback, delay = debounceDelay) => {
+   const debounce = (callback, delay = 0) => {
       let timeout;
       return (...args) => {
          clearTimeout(timeout);
@@ -28,8 +27,10 @@ const SearchTerm = ({
       setSearchTerm(searchTerm);
    });
 
-   const handleOnChange = ({ target: input }) =>
-      updateStateDebounce(input.value);
+   const handleOnChange = ({ target: input }) => {
+      const searchTerm = input.value;
+      updateStateDebounce(searchTerm);
+   };
 
    return (
       <div className='search-term'>
