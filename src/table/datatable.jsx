@@ -174,6 +174,7 @@ const DataTable = ({
                         data={paginatedData}
                         columns={columns}
                         searchTerm={searchTerm}
+                        searchColumns={searchColumns}
                         markSearchTerm={markSearchTerm}
                         readonly={readonly}
                         onRowClick={onRowClick}

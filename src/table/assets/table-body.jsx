@@ -7,6 +7,7 @@ const TableBody = ({
    columns,
    readonly = false,
    searchTerm = '',
+   searchColumns,
    onRowClick,
    printingData,
    markSearchTerm,
@@ -18,7 +19,12 @@ const TableBody = ({
    const renderCellValue = (item, column) => {
       if (column.content) return column.content(item);
       let value;
-      if (markSearchTerm && typeof item[column.path] === 'string')
+
+      if (
+         markSearchTerm &&
+         searchColumns.includes(column.path) &&
+         !column.isDecimal
+      )
          value = getHighlightedText(item[column.path], searchTerm);
       else value = item[column.path];
 
