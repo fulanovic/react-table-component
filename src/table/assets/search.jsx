@@ -42,7 +42,7 @@ const SearchTerm = ({
                      : ''
                   : ''
             }`}
-            name='search'
+            name='search-term'
             onChange={handleOnChange}
             placeholder={placeholder}
          />

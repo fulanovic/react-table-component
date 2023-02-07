@@ -1,56 +1,63 @@
 $bf-tr-hover-color: #666;
 
 .bf-table-container {
-    width: 100%;
-    margin: auto;
+   width: 100%;
+   margin: auto;
 
-    table {
-        width: 100%;
-        color: #333;
+   #search-term {
+      font-size: 1rem;
+      &::placeholder {
+         opacity: 0.5;
+      }
+   }
 
-        thead {
-            tr {
-                th {
-                    border-top: none;
-                    border-bottom: 0.3rem solid #000;
-                }
+   table {
+      width: 100%;
+      color: #333;
+
+      thead {
+         tr {
+            th {
+               border-top: none;
+               border-bottom: 0.3rem solid #000;
             }
-        }
+         }
+      }
 
-        tfoot {
-            tr:first-of-type {
-                border-top: none;
-                border-top: 0.3rem solid #000;
-            }
-            td:not(:first-child) {
-                text-align: right;
-                color: green;
-            }
-        }
-    }
+      tfoot {
+         tr:first-of-type {
+            border-top: none;
+            border-top: 0.3rem solid #000;
+         }
+         td:not(:first-child) {
+            text-align: right;
+            color: green;
+         }
+      }
+   }
 
-    &.enable-hover {
-        tbody {
-            tr {
-                cursor: pointer;
-                transition: all 0.25s ease;
+   &.enable-hover {
+      tbody {
+         tr {
+            cursor: pointer;
+            transition: all 0.25s ease;
 
-                &:hover {
-                    background: $bf-tr-hover-color;
-                    color: white !important;
-                }
+            &:hover {
+               background: $bf-tr-hover-color;
+               color: white !important;
             }
-        }
-    }
+         }
+      }
+   }
 }
 
 .bf-btns-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100%;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   height: 100%;
 
-    .btn-print {
-        width: 10rem;
-    }
+   .btn-print {
+      width: 10rem;
+   }
 }
